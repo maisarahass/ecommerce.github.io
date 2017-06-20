@@ -19,11 +19,11 @@
          include 'init.php';
           $do = isset($_GET['do']) ? $_GET['do'] : 'Manage';
 
-           if ($do == 'Manage'){// 
-                   
+           if ($do == 'Manage'){
+                   // طبعا هنا معملناش جملة سلكت عادية بالعكس عملنا اشي اسمو انر جوين في قاعدة البيانات والهدف منو انو يظهرلك اسم صاحب المنتيج واسم القسم للمنتج انضاف في بدل ميظهرلك ارقام الايديهات تعوتهم
                   $stmt = $con->prepare("SELECT items.*,categories.Name AS category,users.UserName FROM items
                                             INNER JOIN categories ON categories.ID = items.Cat_ID
-                                            INNER JOIN users on users.UserID = items.Members_ID"); // هان حكتلو روح جبلي كل البيانات من جدول اليوزر بس بشرط ميكونش القروب ايدي 1 لانو الواحد خاص بالادمن وانا مش عاوز اجيب بيانات الادمن
+                                            INNER JOIN users on users.UserID = items.Members_ID");
                   $stmt->execute();  
 
                    $items = $stmt->fetchAll();// وهان بقلو بعد متحضر البيانات حطهم بمتغير اسموروز
